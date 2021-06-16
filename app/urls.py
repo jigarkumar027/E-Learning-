@@ -1,0 +1,55 @@
+from django.urls import path,include
+from . import views
+
+urlpatterns = [
+    path('',views.Indexpage,name='indexpage'),
+    path("registerpage/",views.RegisterPage,name="registerpage"),
+    path("loginpage/",views.LoginPage,name="loginpage"),
+    path("register/",views.RegisterUser,name="register"),
+    path("TutorRegister/",views.TutorRegister,name="TutorRegister"),
+    path("TutorLogin/",views.TutorLogin,name="TutorLogin"),
+    path('otpvarify/',views.Otpvarify,name='Otpvarify'),
+    path('OtpvarifyTotor/',views.OtpvarifyTutor,name='OtpvarifyTotor'),
+    path('index2/',views.Indexpage2,name='indexpage2'),
+    path("login/",views.LoginUser,name="login"),
+    path("loginTutor/",views.LoginTutor,name="loginTutor"),
+    path('indextutore2/',views.Indextutorpage2,name='indextutorpage2'),
+    path('tutorpage/',views.tutorpage,name='tutorpage'),
+    path("tutorprofile/<int:pk>",views.TutorProfile,name="tutorprofile"),
+    path('profiledata/<int:pk>',views.profiledata,name="profiledata"),
+    path('addcatTutor/',views.addcatTutor,name='addcatTutor'),
+    path('addcourse/',views.addcourseTutor,name='addcourse'),
+    path('showcourse/',views.showcourse,name='showcourse'),
+    path('coursedetail/<int:pk>',views.coursedetail,name='coursedetail'),
+    path('allcourse/<int:pk>',views.allcourse,name='allcourse'),
+    path('editcourse/<int:pk>',views.editcourse,name='editcourse'),
+    path('deletecourse/<int:pp>',views.deletecourse,name='deletecourse'),
+    path('updatecourse/<int:pk>',views.updatecourse,name='updatecourse'),
+    path('showcourses/',views.showcourses,name='showcourses'),
+    path('shopsingle/<int:pk>',views.shopsingle,name='shopsingle'),
+    path('addcart/<int:pk>',views.addcart,name='addcart'),
+    path('studentlogout/',views.studentlogout,name='studentlogout'),
+    path('checkout/',views.checkout,name='checkout'),
+    path('sprofile/<int:pk>',views.studentprofile,name='studentprofile'),
+    path('sdata/<int:pk>', views.studentdata,name='studentdata'),
+    path('deletecartpro/<int:pk>',views.deletecartpro,name='deletecartpro'),
+    path('deletecartlittel/<int:pk>',views.deletecartlittel,name="deletecartlittel"),
+    path('Tlogout/',views.Totorlogout,name='Tlogout'),
+    path('students/<int:pk>',views.Students,name='students'),
+
+    ################## Admin URLS ############################
+    path('adminpage/',views.adminpage,name='adminpage'),
+    path('adminlogin/',views.adminlogin,name='adminlogin'),
+    path('adminindex/',views.AdminIndex,name="adminindex"),
+    path("addcat/",views.AddCategory,name="addcat"),
+    path('showcat/',views.showcat,name='showcat'),
+    path('delete/<int:pk>',views.deletecat,name='deletecat'),
+    path('edit/<int:pk>',views.editcat,name='editcat'),
+    path('update/<int:pk>',views.updatecat,name='updatecat'),
+    path('adminout/',views.adminlogout,name='adminout'),
+
+################################ PAYTM BLOCK ###############################
+    path('pay/',views.initiate_payment, name='pay'),
+    path('callback/', views.callback, name='callback'),
+
+]

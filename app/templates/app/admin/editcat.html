@@ -1,0 +1,68 @@
+{% extends "app/admin/base.html" %}
+
+{% block content %}
+
+  <!-- HEADER -->
+  <header id="main-header" class="py-2 bg-primary text-white">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h1>Post One</h1>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ACTIONS -->
+  <section id="actions" class="py-4 mb-4 bg-light">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3">
+          <a href="index.html" class="btn btn-light btn-block">
+            <i class="fas fa-arrow-left"></i> Back To Dashboard
+          </a>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- DETAILS -->
+  <section id="details">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <div class="card">
+            <div class="card-header">
+              <h4>Edit Categories</h4>
+            </div>
+            <div class="card-body">
+              {% if keyedit %}
+              <form action="{% url 'updatecat' pk=keyedit.id %}" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-group">
+                  <label for="title">Categories</label>
+                  <input type="text" class="form-control" name="Categories"  value="{{keyedit.Name}}">
+                </div>
+                
+                <div class="col-md-3">
+                  <button class="btn btn-success btn-block" type="submit"> <i class="fas fa-check"></i> Save Changes</button>
+                  
+                </div>
+              </form>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+
+  <!-- MODALS -->
+
+
+  
+{% endblock %}
+

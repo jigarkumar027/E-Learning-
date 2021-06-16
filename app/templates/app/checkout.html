@@ -1,0 +1,190 @@
+{% extends "app/base2.html" %}
+{% block content %}
+
+<!-- Start Bradcaump area -->
+        <div class="ht__bradcaump__area">
+            <div class="ht__bradcaump__container">
+            	<img src="images/bg-png/6.png" alt="bradcaump images">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="bradcaump__inner text-center">
+                                <h2 class="bradcaump-title">Checkout</h2>
+                                <nav class="bradcaump-inner">
+                                  <a class="breadcrumb-item" href="index.html">Home</a>
+                                  <span class="brd-separetor"><img src="images/icons/brad.png" alt="separator images"></span>
+                                  <span class="breadcrumb-item active">Checkout</span>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Bradcaump area -->
+         <section class="htc__checkout bg--white section-padding--lg">
+            <!-- Checkout Section Start-->
+            <div class="checkout-section">
+                <div class="container">
+                    <div class="row">
+                       
+                        <div class="col-lg-6 col-12 mb-30">
+                               
+                                <!-- Checkout Accordion Start -->
+                                <div id="checkout-accordion">
+                                   
+                                    <!-- Checkout Method -->
+                                    
+                                    
+                                    <!-- Billing Method -->
+                                    <div class="single-accordion">
+                                        <a class="accordion-head collapsed" data-toggle="collapse" data-parent="#checkout-accordion" href="#billing-method"> billing informatioon</a>
+                                        <div id="billing-method" class="collapse">
+
+                                            <!-- <div class="accordion-body billing-method fix"> -->
+                                                {% if sdata %}
+                                                <form action="{% url 'pay' %}" class="billing-form checkout-form" method="POST">
+                                                    {% csrf_token %}
+                                                    <div class="row">
+                                                        
+                                                        <div class="col-md-6 col-12 mb--20">                                 
+                                                            <input type="text" placeholder="" value="{{sdata.Country}}">
+                                                        </div>
+
+
+                                                        <div class="col-md-6 col-12 mb--20">                                 
+                                                            <input type="text" placeholder="" value="{{sdata.Firstname}}">
+                                                        </div>
+                                                        <div class="col-md-6 col-12 mb--20">                             
+                                                            <input type="text" placeholder="" value="{{sdata.Lastname}}">
+                                                        </div>
+                                                        <!-- <div class="col-12 mb--20">                              
+                                                            <input type="text" placeholder="Company Name" >
+                                                        </div> -->
+                                                        <div class="col-12 mb--20">
+                                                            <input placeholder="Street address" type="text" value="{{sdata.Address}}">
+                                                        </div>
+                                                        <!-- <div class="col-12 mb--20">
+                                                            <input placeholder="Apartment, suite, unit etc. (optional)" type="text">
+                                                        </div> -->
+                                                        <div class="col-12 mb--20">
+                                                            <input placeholder="Town / City" type="text" value="{{sdata.City}}"> 
+                                                        </div>
+                                                        <div class="col-md-6 col-12 mb--20">                                 
+                                                            <input type="text" placeholder="State" value="{{sdata.State}}">
+                                                        </div>
+                                                        <!-- <div class="col-md-6 col-12 mb--20">                                 
+                                                            <input placeholder="Postcode / Zip" type="text">
+                                                        </div> -->
+                                                        <div class="col-md-6 col-12 mb--20">                                 
+                                                            <input type="email" placeholder="Email Address" value="{{sdata.user_id.Email}}">
+                                                        </div>
+                                                        <div class="col-md-6 col-12">                                   
+                                                            <input placeholder="Phone Number" type="text" value="{{sdata.Contact}}">
+                                                        </div>
+                                                       
+                                                        
+                                                            <div class="accordion-body payment-method fix">
+                                                               <label for="">Payment Method</label>
+                                                                <ul class="payment-method-list">                              
+                                                                    <input type="radio" name="payment_method" id=""> <span>Paytm</span>
+                                                                    
+                                                                </ul>
+                                                                
+                                                                
+                                                            
+                                                            </div>
+
+                                                            <input type="hidden" name="sub_total" value="{{Total}}">
+                                                        
+                                                           
+                                                            <li><button type="submit" class="dcare__btn" >Place Order</button></li>      
+                                                            
+                                                        </div>
+                                                </form>
+                                                {% endif %}
+                                            <!-- </div> -->
+                                        </div>
+                                    </div>
+                                    
+                                    
+                                    <!-- Payment Method -->
+                                    <!-- <div class="single-accordion">
+                                        <a class="accordion-head collapsed" data-toggle="collapse" data-parent="#checkout-accordion" href="#payment-method"> Payment method</a>
+                                        <div id="payment-method" class="collapse">
+                                            <div class="accordion-body payment-method fix">
+                                               
+                                                
+                                                    
+                                                </ul>
+                                                
+                                                
+                                            
+                                            </div>
+                                        </div>
+                                    </div> -->
+                                    
+                                </div><!-- Checkout Accordion Start -->
+                            </div>
+                            
+                            <!-- Order Details -->
+                            <div class="col-lg-6 col-12 mb-30">
+                               
+                                <div class="order-details-wrapper">
+                                    <h2>your order</h2>
+                                    <div class="order-details">
+                                        <form action="#">
+                                            <ul>
+                                                <li><p class="strong">product</p><p class="strong">total</p></li>
+                                                {% if cart123 %}
+                                                {% for i in cart123 %}
+                                                <li><p>{{i.Course_id.Name}}</p><p>{{i.Course_id.Price}}</p></li>
+                                                
+                                                {% endfor %}
+                                                
+                                               
+                                                <li><p class="strong">order total</p><p class="strong">{{Total}}</p></li>
+                                                
+                                                {% endif %}
+                                            </ul>
+                                        </form>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        
+                    </div>
+                </div>
+            </div><!-- Checkout Section End-->             
+         </section>  
+		<!-- Start Subscribe Area -->
+		<section class="bcare__subscribe bg-image--7 subscrive--2">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12 col-sm-12 col-lg-12">
+						<div class="subscribe__inner">
+							<h2>Subscribe To Our Newsletter</h2>
+                            <div class="newsletter__form">
+                                <div class="input__box">
+                                    <div id="mc_embed_signup">
+                                        <form action="http://devitems.us11.list-manage.com/subscribe/post?u=6bbb9b6f5827bd842d9640c82&amp;id=05d85f18ef" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+                                            <div id="mc_embed_signup_scroll" class="htc__news__inner">
+                                                <div class="news__input">
+                                                    <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="Enter Your E-mail" required>
+                                                </div>
+                                                <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                                                <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_6bbb9b6f5827bd842d9640c82_05d85f18ef" tabindex="-1" value=""></div>
+                                                <div class="clearfix subscribe__btn"><input type="submit" value="Send Now" name="subscribe" id="mc-embedded-subscribe" class="bst__btn btn--white__color">
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>        
+                            </div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- End Subscribe Area -->
+        {% endblock %}

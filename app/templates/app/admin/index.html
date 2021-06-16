@@ -1,0 +1,245 @@
+
+{% extends "app/admin/base.html" %}
+
+{% block content %}
+  <!-- HEADER -->
+  <header id="main-header" class="py-2 bg-primary text-white">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h1><i class="fas fa-cog"></i> Dashboard</h1>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ACTIONS -->
+  <section id="actions" class="py-4 mb-4 bg-light">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3">
+          <a href="" class="btn btn-primary btn-block" data-toggle="modal" data-target="#addPostModal">
+            <i class="fas fa-plus"></i> Add Post
+          </a>
+        </div>
+        <div class="col-md-3">
+          <a href="#" class="btn btn-success btn-block" data-toggle="modal" data-target="#addCategoryModal">
+            <i class="fas fa-plus"></i> Add Category
+          </a>
+        </div>
+        <!-- <div class="col-md-3">
+          <a href="#" class="btn btn-warning btn-block" data-toggle="modal" data-target="#addUserModal">
+            <i class="fas fa-plus"></i> Add User
+          </a>
+        </div> -->
+      </div>
+    </div>
+  </section>
+{% if msg %}
+
+    <center><strong><h4 style="color: red;">{{msg}}</h4></strong> </center>
+
+{% endif %}
+  <!-- POSTS -->
+  <section>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-9" id="postParent">
+          <div class="card" id="postContainer">
+            <div class="card-header">
+              <h4>Latest Posts</h4>
+            </div>
+            <table class="table table-striped" id="postTable">
+              <thead class="table-dark">
+                <tr>
+                  <th>Id</th>
+                  <th>Title</th>
+                  <th>Category</th>
+                  <th>Date</th>
+                  
+                </tr>
+              </thead>
+            
+              <tbody id="latestPosts">
+                
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  </tr>
+                  
+              </tbody>
+             
+            </table>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="card text-center bg-primary text-white mb-3">
+            <div class="card-body">
+              <h3>Posts</h3>
+              <!-- Added ID for JS -->
+              <h4 class="display-4" id="postCount">
+                <i class="fas fa-pencil-alt"></i> 
+              </h4>
+              <a href="" class="btn btn-outline-light btn-sm">View</a>
+            </div>
+
+          </div> 
+          <div class="card text-center bg-success text-white mb-3"> 
+            <div class="card-body"> 
+              <h3>Categories</h3>  
+              <h4 class="display-4" id="postCount">
+                <i class="fas fa-pencil-alt">{{count}}</i> 
+              </h4>
+              <a href="" class="btn btn-outline-light btn-sm">View</a> 
+            </div> 
+          </div> 
+          
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+
+  <!-- MODALS -->
+
+  <!-- ADD POST MODAL -->
+  <div class="modal fade" id="addPostModal">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header bg-primary text-white">
+          <h5 class="modal-title">Add Post</h5>
+          <button class="close" data-dismiss="modal">
+            <span>&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form id="postForm" method="POST" enctype="multipart/form-data" action="">
+            {% csrf_token %}
+            <div class="form-group">
+              <label for="title">Title</label>
+              <input type="text" name="title" class="form-control" id="postTitle">
+            </div>
+            <div class="form-group">
+              <label for="category">Category</label>
+              
+              <select class="form-control" name="category" id="postCategory">
+                <option selected="selected">Choose One...</option>
+                
+                <option value=""></option>
+                
+              </select>
+              
+            </div>
+            
+            
+            <div class="form-group">
+              <label for="title">keyword</label>
+              <input type="text" name="keyword" class="form-control" id="postTitle">
+            </div>
+            <div class="form-group">
+              <label for="title">author</label>
+              <input type="text" name="author" class="form-control" id="postTitle">
+            </div>
+           
+            <div class="form-group">
+              <label for="title">author img</label>
+              <input type="file" name="authorimg" class="form-control" id="postTitle">
+            </div>
+            <div class="form-group">
+              <label for="image">Upload Image</label>
+              <div class="form-group">
+                
+                <input type="file" name="image" class="form-control" id="postTitle">
+              </div>
+              <div class="form-group">
+                <label for="title">shortcontent </label>
+                <textarea class="form-control" name="shortcontent" id="" cols="30" rows="5" ></textarea>
+              </div>
+
+              <div class="form-group">
+                <label for="body">Body</label>
+                <textarea name="editor1" class="form-control" id="postBody"></textarea>
+              </div>
+
+            </div>
+            <div class="modal-footer">
+              <!-- Added id for JS -->
+              <button class="btn btn-primary" type="submit" id="addPostBtn">Add Post</button>
+            </div>
+          </form>
+        </div>
+       
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ADD CATEGORY MODAL -->
+  <div class="modal fade" id="addCategoryModal">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header bg-success text-white">
+          <h5 class="modal-title">Add Category</h5>
+          <button class="close" data-dismiss="modal">
+            <span>&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form method="POST" action="{% url 'addcat' %}"> 
+            {% csrf_token %}
+            <div class="form-group">
+              <label for="title">Title</label>
+              <input type="text" class="form-control" name="cname">
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-success" type="submit">Save Changes</button>
+            </div>
+          </form>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <!-- ADD USER MODAL
+  <div class="modal fade" id="addUserModal">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header bg-warning text-white">
+          <h5 class="modal-title">Add User</h5>
+          <button class="close" data-dismiss="modal">
+            <span>&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input type="password" class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="password2">Confirm Password</label>
+              <input type="password" class="form-control">
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-warning" data-dismiss="modal">Save Changes</button>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+
+{% endblock %}

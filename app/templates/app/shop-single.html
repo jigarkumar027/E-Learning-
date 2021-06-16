@@ -1,0 +1,264 @@
+{% extends "app/base2.html" %}
+{% block content %}
+        <!-- Start Bradcaump area -->
+        <div class="ht__bradcaump__area bradcaump__style--2">
+            <div class="ht__bradcaump__container bg-pngimage--7">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="bradcaump__inner text-center">
+                                <h2 class="bradcaump-title">Shop</h2>
+                                <nav class="bradcaump-inner">
+                                  <a class="breadcrumb-item" href="index.html">Home</a>
+                                  <span class="brd-separetor"><img src="images/icons/brad.png" alt="separator images"></span>
+                                  <span class="breadcrumb-item active">Shop Single</span>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Bradcaump area -->
+
+		<!-- Shop Single -->
+		<section class="dcare__shop__single bg--white section-padding--lg">
+			<div class="container">
+				<div class="row">
+					{% if keycourse %}
+					
+					<div class="col-lg-4 col-md-8 col-sm-8 col-12">
+						
+						<div class="shop-big-image">
+							<div class="shop--item tab-pane fade show active" id="nav-dress" role="tabpanel">
+								<img src="{{MEDIA_URL}}{{keycourse.course_pic.url}}" alt="product images">
+							</div>
+							<div class="shop--item tab-pane fade" id="nav-acce" role="tabpanel">
+								<img src="#" alt="product images">
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-6 col-md-12 col-sm-12 col-12 md-mt-40">
+						<div class="shop__single__details">
+							<h2>{{keycourse.Name}}</h2>
+
+							<ul class="prize d-flex">
+								<li class="old-prize">$65.00</li>
+								<li>{{keycourse.Price}}</li>
+							</ul>
+
+							<ul class="rating d-flex">
+								<li><i class="fa fa-star"></i></li>
+								<li><i class="fa fa-star"></i></li>
+								<li><i class="fa fa-star"></i></li>
+								<li><i class="fa fa-star"></i></li>
+								<li><i class="fa fa-star"></i></li>
+							</ul>
+
+							<p>Lorem ipsum dolor sit amet, consectetur adeiusmod tempor incididunt ut dolore magna aliqua. Ut enim ad minim veniam, qunostrud exercitation ullamlaboris nisaliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consec do eiusmod tincididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quexercitation ullamco laboris nicupidatat proideaque ipsa quae ab illo inventore veritatis et quconsectetur, adipisci velit, sed quia non numq.</p>
+
+							
+							
+
+							
+                            {% if category %}
+							<div class="shop__cat">
+								<span>Category :</span>
+								<ul>
+									<li><a href="#">{{category.Name}}</a></li>
+									
+								</ul>
+							</div>
+						    {% endif %}
+							<div class="Addto__cart__btn">
+								<a  href="{% url 'addcart' pk=keycourse.id %}">Add to Cart</a>
+							</div>
+
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="shop__des nav justify-content-start" role="tablist">
+                            <a class="nav-item nav-link active" data-toggle="tab" href="#des" role="tab">Description</a>
+                            <a class="nav-item nav-link" data-toggle="tab" href="#info" role="tab">Additional Information</a>
+                            <a class="nav-item nav-link" data-toggle="tab" href="#rev" role="tab">Reviews</a>
+                        </div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="description__content">
+							<div class="single__des tab-pane fade show active" id="des" role="tabpanel">
+								<p>Lorem ipsum dolor sit amet, consec do eiusmod tincididunt ut labore et dolore magna aliqua. Ut enim ad minim veniaLorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae  tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.m, quis nostrud exercitation ullamco laboris .</p>
+							</div>
+							<div class="single__des tab-pane fade" id="info" role="tabpanel">
+								<p>Lorem ipsum dolor sit amet, consec do eiusmod tincididunt ut labore et dolore magna aliqua. Ut enim ad minim veniaLorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae  tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.m, quis nostrud exercitation ullamco laboris .</p>
+
+								<p class="mt--30">Lorem ipsum dolor sit amet, consec do eiusmod tincididunt ut labore et dolore magna aliqua. Ut enim ad minim veniaLorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,</p>
+							</div>
+							<div class="single__des tab-pane fade" id="rev" role="tabpanel">
+								<div class="classs__review__inner">
+									<h4>Add A review</h4>
+									<p>Your E-mail Address Will not be published. Required field are marked *</p>
+									<span>Your rating</span>
+									<ul class="rating">
+										<li><i class="fa fa-star"></i></li>
+										<li><i class="fa fa-star"></i></li>
+										<li><i class="fa fa-star"></i></li>
+										<li><i class="fa fa-star"></i></li>
+										<li><i class="fa fa-star"></i></li>
+									</ul>
+									<form action="#">
+										<div class="input__box">
+											<span>Your Review *</span>
+											<textarea name="message"></textarea>
+										</div>
+										<div class="input__box">
+											<span>Name*</span>
+											<input type="text">
+										</div>
+										<div class="input__box">
+											<span>E-mail*</span>
+											<input type="email">
+										</div>
+										<div class="submit__btn">
+											<a class="dcare__btn btn__org hover__theme" href="#">Submit Now</a>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+						{% endif %}
+					</div>
+				</div>
+
+				<div class="row mt--100">
+					<div class="col-lg-12">
+						<h2 class="shop__title">Related product</h2>
+					</div>
+					<!-- Start Single Product -->
+					<div class="col-lg-3 col-md-4 col-sm-6 col-12">
+						<div class="product--2 product__grid">
+							<div class="product__imges">
+								<a href="shop-single.html">
+									<img src="images/product/dress/1.png" alt="product images">
+								</a>
+								<div class="pro__label">
+									<span>Sale</span>
+								</div>
+								<div class="product__cart__wrapper">
+									<ul class="cart__list">
+										<li><a href="cart.html"><span class="ti-shopping-cart"></span></a></li>
+										<li><a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#"><span class="ti-search"></span></a></li>
+										<li><a href="wishlist.html"><span class="ti-heart"></span></a></li>
+									</ul>
+								</div>
+							</div>
+							<div class="product__inner">
+								<div class="pro__title">
+									<h4><a href="shop-single.html">White T-shirt</a></h4>
+								</div>
+								<div class="pro__prize">
+									<span class="old__prize">$65.00</span>
+									<span>$40.00 </span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- End Single Product -->
+					<!-- Start Single Product -->
+					<div class="col-lg-3 col-md-4 col-sm-6 col-12">
+						<div class="product--2 product__grid">
+							<div class="product__imges">
+								<a href="shop-single.html">
+									<img src="images/product/dress/2.png" alt="product images">
+								</a>
+								<div class="pro__label">
+									<span>New</span>
+								</div>
+								<div class="product__cart__wrapper">
+									<ul class="cart__list">
+										<li><a href="cart.html"><span class="ti-shopping-cart"></span></a></li>
+										<li><a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#"><span class="ti-search"></span></a></li>
+										<li><a href="wishlist.html"><span class="ti-heart"></span></a></li>
+									</ul>
+								</div>
+							</div>
+							<div class="product__inner">
+								<div class="pro__title">
+									<h4><a href="shop-single.html">Warm Cap</a></h4>
+								</div>
+								<div class="pro__prize">
+									<span class="old__prize">$65.00</span>
+									<span>$40.00 </span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- End Single Product -->
+					<!-- Start Single Product -->
+					<div class="col-lg-3 col-md-4 col-sm-6 col-12">
+						<div class="product--2 product__grid">
+							<div class="product__imges">
+								<a href="shop-single.html">
+									<img src="images/product/dress/3.png" alt="product images">
+								</a>
+								<div class="pro__label">
+									<span>Hot</span>
+								</div>
+								<div class="product__cart__wrapper">
+									<ul class="cart__list">
+										<li><a href="cart.html"><span class="ti-shopping-cart"></span></a></li>
+										<li><a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#"><span class="ti-search"></span></a></li>
+										<li><a href="wishlist.html"><span class="ti-heart"></span></a></li>
+									</ul>
+								</div>
+							</div>
+							<div class="product__inner">
+								<div class="pro__title">
+									<h4><a href="shop-single.html">Gray Muffler</a></h4>
+								</div>
+								<div class="pro__prize">
+									<span class="old__prize">$65.00</span>
+									<span>$40.00 </span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- End Single Product -->
+					<!-- Start Single Product -->
+					<div class="col-lg-3 col-md-4 col-sm-6 col-12">
+						<div class="product--2 product__grid">
+							<div class="product__imges">
+								<a href="shop-single.html">
+									<img src="images/product/dress/4.png" alt="product images">
+								</a>
+								<div class="product__cart__wrapper">
+									<ul class="cart__list">
+										<li><a href="cart.html"><span class="ti-shopping-cart"></span></a></li>
+										<li><a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#"><span class="ti-search"></span></a></li>
+										<li><a href="wishlist.html"><span class="ti-heart"></span></a></li>
+									</ul>
+								</div>
+							</div>
+							<div class="product__inner">
+								<div class="pro__title">
+									<h4><a href="shop-single.html">White T-shirt</a></h4>
+								</div>
+								<div class="pro__prize">
+									<span class="old__prize">$90.00</span>
+									<span>$40.00 </span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- End Single Product -->
+				</div>
+			</div>
+		</section>
+		<!-- End Single -->
+		
+{% endblock %}	
